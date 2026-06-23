@@ -1,0 +1,58 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import { getAlternateLinks, type Locale } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  t: Record<string, any>;
+  title?: string;
+  description?: string;
+  currentPath: string;
+}
+
+const { locale, t, title, description, currentPath } = Astro.props;
+
+const pageTitle = title ? `${title} | ${t.site.name}` : t.site.name;
+const pageDescription = description ?? t.site.description;
+const alternateLinks = getAlternateLinks(currentPath, locale);
+---
+
+<!doctype html>
+<html lang={locale} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={pageDescription} />
+    <title>{pageTitle}</title>
+
+    <!-- hreflang（多言語SEO） -->
+    {alternateLinks.map(({ locale: loc, href }) => (
+      <link
+        rel="alternate"
+        hreflang={loc === 'zh-TW' ? 'zh-Hant' : loc}
+        href={`https://tsukiakari-japan.com${href}`}
+      />
+    ))}
+    <link rel="alternate" hreflang="x-default" href="https://tsukiakari-japan.com/" />
+
+    <!-- OGP -->
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={locale === 'zh-TW' ? 'zh_TW' : locale === 'en' ? 'en_US' : 'ja_JP'} />
+
+    <!-- ファビコン -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <Header locale={locale} t={t} currentPath={currentPath} />
+
+    <main class="pt-16">
+      <slot />
+    </main>
+
+    <Footer locale={locale} t={t} />
+  </body>
+</html>

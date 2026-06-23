@@ -1,0 +1,26 @@
+# ビルド成果物
+dist/
+.astro/
+
+# 依存関係
+node_modules/
+
+# 環境変数
+.env
+.env.local
+.env.production
+
+# OS
+.DS_Store
+Thumbs.db
+
+# エディタ
+.vscode/
+.idea/
+*.swp
+
+*.pkg
+node_modules/
+dist/
+.astro/
+.DS_Store

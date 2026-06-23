@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import { useTranslations } from '../i18n/utils';
+
+const locale = 'ja';
+const t = useTranslations(locale);
+const currentPath = '/about';
+---
+
+<BaseLayout locale={locale} t={t} title={t.about.heading} currentPath={currentPath}>
+
+  <!-- ページヘッダー -->
+  <section class="py-16 bg-warmwhite border-b border-border">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <p class="text-xs text-shu font-semibold tracking-widest uppercase mb-3">About</p>
+      <h1 class="text-3xl md:text-4xl font-bold text-charcoal">{t.about.heading}</h1>
+      <p class="text-midgray mt-3 text-sm">{t.about.subheading}</p>
+    </div>
+  </section>
+
+  <!-- 教室の想い -->
+  <section class="py-16 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div class="flex items-start gap-4 mb-6">
+        <span class="mt-1 w-1 h-12 bg-shu rounded-full flex-shrink-0" aria-hidden="true"></span>
+        <h2 class="text-2xl font-bold text-charcoal">{t.about.storyTitle}</h2>
+      </div>
+      <p class="text-[15px] text-midgray leading-[1.9] pl-5">{t.about.story}</p>
+    </div>
+  </section>
+
+  <div class="washi-divider max-w-6xl mx-auto px-4 sm:px-6"></div>
+
+  <!-- 講師プロフィール -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+
+        <!-- 写真プレースホルダー -->
+        <div class="flex flex-col items-center">
+          <div class="w-44 h-44 rounded-full bg-cream border border-border flex items-center justify-center mb-4">
+            <span class="text-5xl text-shu/30 font-bold select-none">月</span>
+          </div>
+          <p class="font-bold text-charcoal text-base text-center">{t.about.teacherName}</p>
+          <p class="text-xs text-midgray text-center mt-1">{t.site.name}</p>
+        </div>
+
+        <!-- 本文 -->
+        <div class="md:col-span-2">
+          <h2 class="text-xl font-bold text-charcoal mb-4 pb-3 border-b border-border">
+            {t.about.teacherTitle}
+          </h2>
+          <p class="text-[15px] text-midgray leading-relaxed mb-8">{t.about.teacherBio}</p>
+
+          <h3 class="text-sm font-semibold text-charcoal mb-4 uppercase tracking-widest">
+            {t.about.qualifications}
+          </h3>
+          <ul class="space-y-2.5">
+            {t.about.qualificationsList.map((item: string) => (
+              <li class="flex items-start gap-3">
+                <span class="mt-2 w-1.5 h-1.5 rounded-full bg-shu flex-shrink-0" aria-hidden="true"></span>
+                <span class="text-sm text-midgray">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner locale={locale} t={t} />
+</BaseLayout>

@@ -1,0 +1,141 @@
+{
+  "lang": "en",
+  "langName": "English",
+  "site": {
+    "name": "Tsukiakari Japanese School",
+    "tagline": "Gentle guidance, like moonlight — learn Japanese your way.",
+    "description": "Online and in-person lessons available. For English and Chinese speakers, and heritage language learners abroad."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "courses": "Courses & Fees",
+    "contact": "Contact",
+    "trial": "Book a Trial Lesson"
+  },
+  "hero": {
+    "headline": "You love Japan. That's enough to start.",
+    "subtext": "Online and in-person lessons available. For English and Chinese speakers, and heritage language learners abroad.",
+    "cta": "Book a Trial Lesson",
+    "ctaSub": "Feel free to reach out anytime"
+  },
+  "features": {
+    "heading": "Why Choose Tsukiakari?",
+    "items": [
+      {
+        "icon": "🌐",
+        "title": "Multilingual Support",
+        "desc": "Lessons conducted with English or Chinese support — perfect for complete beginners."
+      },
+      {
+        "icon": "💻",
+        "title": "Online & In-Person",
+        "desc": "Join from anywhere in the world, or attend in-person lessons near Tokyo."
+      },
+      {
+        "icon": "👶",
+        "title": "Heritage Language Education",
+        "desc": "Specialized instruction for Japanese children living abroad to maintain their reading and writing skills."
+      },
+      {
+        "icon": "✨",
+        "title": "Personalized Lessons",
+        "desc": "Curriculum tailored to your goals, level, and pace so you can build skills steadily."
+      }
+    ]
+  },
+  "about": {
+    "heading": "About",
+    "subheading": "Our philosophy and teacher profile",
+    "storyTitle": "Our Philosophy",
+    "story": "Tsukiakari Japanese School was born from a desire to provide a warm and reliable learning environment for everyone who wants to learn Japanese. Just as moonlight gently reaches every corner, we support your Japanese learning at your own pace, in a way that suits you.",
+    "teacherTitle": "Teacher Profile",
+    "teacherName": "Akina Hiroshima",
+    "teacherBio": "Certified Japanese language teacher with experience teaching English and Chinese speakers. With the motto \"Language is a bridge between people,\" every lesson is tailored to the individual student.",
+    "qualifications": "Qualifications & Experience",
+    "qualificationsList": [
+      "Completed Japanese Language Teacher Training Program",
+      "Certified in Japanese Language Education",
+      "Experience teaching English and Asian language speakers",
+      "Heritage language education for Japanese children living abroad"
+    ]
+  },
+  "courses": {
+    "heading": "Courses & Fees",
+    "subheading": "Choose the course that fits your goals and level. Trial lessons are available for all courses.",
+    "items": [
+      {
+        "name": "Beginner Course",
+        "target": "Complete beginners",
+        "format": "Online / In-person",
+        "price": "[TBD] ¥〇〇 / 60 min",
+        "desc": "Start from hiragana and katakana, learn everyday greetings and basic expressions."
+      },
+      {
+        "name": "Elementary–Intermediate Course",
+        "target": "Those aiming for conversational Japanese",
+        "format": "Online / In-person",
+        "price": "[TBD] ¥〇〇 / 60 min",
+        "desc": "Study grammar and vocabulary systematically to reach a natural conversational level."
+      },
+      {
+        "name": "Business Japanese",
+        "target": "Those who need Japanese for work",
+        "format": "Online",
+        "price": "[TBD] ¥〇〇 / 60 min",
+        "desc": "Learn practical Japanese for business settings — keigo, emails, and workplace communication."
+      },
+      {
+        "name": "Heritage Language Course",
+        "target": "Japanese children living abroad",
+        "format": "Online",
+        "price": "[TBD] ¥〇〇 / 60 min",
+        "desc": "Focused on maintaining and strengthening reading and writing skills while nurturing a connection to Japanese."
+      },
+      {
+        "name": "Trial Lesson",
+        "target": "Everyone",
+        "format": "Online / In-person",
+        "price": "[TBD] ¥〇〇 or Free",
+        "desc": "Try a lesson with no pressure. Experience the teaching style and atmosphere firsthand."
+      }
+    ],
+    "note": "* Fees are subject to change. Please contact us for details.",
+    "cta": "Book a Trial Lesson"
+  },
+  "contact": {
+    "heading": "Contact & Trial Lesson Booking",
+    "subheading": "Feel free to reach out. We usually respond within 2–3 business days.",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "e.g., Jane Smith",
+      "email": "Email Address",
+      "emailPlaceholder": "e.g., jane@example.com",
+      "nativeLanguage": "Native Language",
+      "nativeLanguagePlaceholder": "e.g., English / Chinese / Other",
+      "courseInterest": "Course of Interest",
+      "courseOptions": [
+        "Beginner Course",
+        "Elementary–Intermediate Course",
+        "Business Japanese",
+        "Heritage Language Course",
+        "Trial Lesson",
+        "Not sure yet"
+      ],
+      "message": "Message",
+      "messagePlaceholder": "Please write your questions or requests here",
+      "trialLesson": "I'd like to book a trial lesson",
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "successTitle": "Message Sent!",
+      "successMessage": "Thank you for reaching out. We'll get back to you within 2–3 business days.",
+      "errorMessage": "Something went wrong. Please try again later."
+    }
+  },
+  "footer": {
+    "tagline": "Warm, reliable Japanese learning.",
+    "links": "Links",
+    "contact": "Contact",
+    "copyright": "© 2026 Tsukiakari Japanese School. All rights reserved."
+  }
+}

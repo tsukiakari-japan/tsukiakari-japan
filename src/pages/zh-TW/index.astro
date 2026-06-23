@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroSection from '../../components/HeroSection.astro';
+import FeaturesSection from '../../components/FeaturesSection.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+import { useTranslations, getLocalePath } from '../../i18n/utils';
+
+const locale = 'zh-TW';
+const t = useTranslations(locale);
+const currentPath = '/';
+---
+
+<BaseLayout locale={locale} t={t} currentPath={currentPath}>
+  <HeroSection locale={locale} t={t} />
+  <FeaturesSection t={t} />
+
+  <section class="py-20 bg-warmwhite">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="section-heading">{t.about.heading}</h2>
+          <p class="text-midgray leading-relaxed mb-8 text-[15px]">{t.about.story}</p>
+          <a href={getLocalePath(locale, '/about')} class="btn-shu-outline">{t.about.heading} →</a>
+        </div>
+        <div class="relative flex items-center justify-center py-12">
+          <div class="w-52 h-52 rounded-full bg-shu/8 flex items-center justify-center">
+            <div class="w-36 h-36 rounded-full bg-shu/15 flex items-center justify-center">
+              <div class="w-20 h-20 rounded-full bg-shu/25 flex items-center justify-center">
+                <span class="text-3xl text-shu font-bold select-none">月</span>
+              </div>
+            </div>
+          </div>
+          <div class="absolute bottom-4 right-4 text-right">
+            <p class="font-bold text-charcoal text-sm">{t.about.teacherName}</p>
+            <p class="text-xs text-midgray mt-0.5">{t.site.name}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
+        <h2 class="section-heading">{t.courses.heading}</h2>
+        <a href={getLocalePath(locale, '/courses')} class="text-sm text-shu font-semibold hover:underline whitespace-nowrap">查看全部 →</a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-border border border-border">
+        {t.courses.items.slice(0, 3).map((course: any) => (
+          <div class="bg-white p-7 hover:bg-warmwhite transition-colors duration-200">
+            <h3 class="text-base font-bold text-charcoal mb-1">{course.name}</h3>
+            <p class="text-xs text-midgray mb-3">{course.target}</p>
+            <p class="text-sm text-midgray leading-relaxed mb-5">{course.desc}</p>
+            <div class="flex items-center justify-between pt-4 border-t border-border">
+              <span class="text-xs text-midgray">{course.format}</span>
+              <span class="text-sm font-bold text-shu">{course.price}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner locale={locale} t={t} />
+</BaseLayout>

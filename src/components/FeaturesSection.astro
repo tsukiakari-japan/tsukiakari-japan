@@ -1,0 +1,27 @@
+---
+interface Props {
+  t: Record<string, any>;
+}
+const { t } = Astro.props;
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
+    <div class="text-center mb-14">
+      <h2 class="section-heading inline-block">{t.features.heading}</h2>
+    </div>
+
+    <!-- グリッド枠線スタイル -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
+      {t.features.items.map((item: any) => (
+        <div class="bg-white p-8 group hover:bg-warmwhite transition-colors duration-200">
+          <div class="text-3xl mb-4">{item.icon}</div>
+          <h3 class="text-base font-bold text-charcoal mb-2">{item.title}</h3>
+          <p class="text-sm text-midgray leading-relaxed">{item.desc}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

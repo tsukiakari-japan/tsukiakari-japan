@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+import { useTranslations, getLocalePath } from '../../i18n/utils';
+
+const locale = 'zh-TW';
+const t = useTranslations(locale);
+const currentPath = '/courses';
+---
+
+<BaseLayout locale={locale} t={t} title={t.courses.heading} currentPath={currentPath}>
+  <section class="py-16 bg-warmwhite border-b border-border">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <p class="text-xs text-shu font-semibold tracking-widest uppercase mb-3">Courses & Fees</p>
+      <h1 class="text-3xl md:text-4xl font-bold text-charcoal">{t.courses.heading}</h1>
+      <p class="text-midgray mt-3 text-sm max-w-xl mx-auto">{t.courses.subheading}</p>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-border border border-border">
+        {t.courses.items.map((course: any, i: number) => (
+          <div class={`bg-white p-8 hover:bg-warmwhite transition-colors duration-200 ${i === t.courses.items.length - 1 ? 'md:col-span-2' : ''}`}>
+            <div class="flex items-start justify-between mb-4">
+              <h2 class="text-lg font-bold text-charcoal">{course.name}</h2>
+              {i === t.courses.items.length - 1 && (
+                <span class="text-[10px] font-bold text-shu border border-shu px-2 py-0.5 tracking-widest uppercase">推薦</span>
+              )}
+            </div>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-warmwhite text-midgray text-xs px-3 py-1 rounded-sm border border-border">{course.target}</span>
+              <span class="bg-warmwhite text-midgray text-xs px-3 py-1 rounded-sm border border-border">{course.format}</span>
+            </div>
+            <p class="text-sm text-midgray leading-relaxed mb-6">{course.desc}</p>
+            <div class="flex items-center justify-between pt-5 border-t border-border">
+              <span class="text-lg font-bold text-shu">{course.price}</span>
+              <a href={getLocalePath(locale, '/contact')} class="text-xs font-semibold text-charcoal hover:text-shu transition-colors tracking-wide">申請 →</a>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p class="mt-6 text-xs text-midgray text-center">{t.courses.note}</p>
+    </div>
+  </section>
+
+  <CtaBanner locale={locale} t={t} />
+</BaseLayout>

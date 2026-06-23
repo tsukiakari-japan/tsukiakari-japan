@@ -1,0 +1,120 @@
+---
+import { getAlternateLinks, getLocalePath, type Locale } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  t: Record<string, any>;
+  currentPath: string;
+}
+
+const { locale, t, currentPath } = Astro.props;
+const alternateLinks = getAlternateLinks(currentPath, locale);
+
+const navLinks = [
+  { href: getLocalePath(locale),             label: t.nav.home },
+  { href: getLocalePath(locale, '/about'),   label: t.nav.about },
+  { href: getLocalePath(locale, '/courses'), label: t.nav.courses },
+  { href: getLocalePath(locale, '/contact'), label: t.nav.contact },
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-border">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between h-16">
+
+      <!-- ロゴ：朱丸＋テキスト -->
+      <a href={getLocalePath(locale)} class="flex items-center gap-2.5 group">
+        <span class="w-7 h-7 rounded-full bg-shu flex-shrink-0 group-hover:scale-110 transition-transform duration-200" aria-hidden="true"></span>
+        <span class="font-bold text-charcoal text-lg tracking-tight hidden sm:block leading-none">
+          {t.site.name}
+        </span>
+        <span class="font-bold text-charcoal text-base sm:hidden">つきあかり</span>
+      </a>
+
+      <!-- PC ナビ -->
+      <nav class="hidden md:flex items-center gap-8" aria-label="メインナビゲーション">
+        {navLinks.map(({ href, label }) => (
+          <a
+            href={href}
+            class="text-sm font-medium text-midgray hover:text-charcoal transition-colors duration-150
+                   relative after:absolute after:-bottom-0.5 after:left-0 after:right-0
+                   after:h-px after:bg-shu after:scale-x-0 hover:after:scale-x-100
+                   after:transition-transform after:duration-200 after:origin-left"
+          >
+            {label}
+          </a>
+        ))}
+      </nav>
+
+      <!-- 右端：言語 + CTA -->
+      <div class="flex items-center gap-3">
+        <!-- 言語切り替え -->
+        <div class="flex items-center gap-1 text-xs">
+          {alternateLinks.map(({ locale: loc, href, isCurrent }) => (
+            <a
+              href={href}
+              class={`px-2 py-1 transition-colors duration-150 ${
+                isCurrent
+                  ? 'text-shu font-bold border-b border-shu'
+                  : 'text-midgray hover:text-charcoal'
+              }`}
+              aria-current={isCurrent ? 'page' : undefined}
+            >
+              {loc === 'ja' ? 'JP' : loc === 'en' ? 'EN' : 'TW'}
+            </a>
+          ))}
+        </div>
+
+        <!-- CTA（PC） -->
+        <a href={getLocalePath(locale, '/contact')} class="hidden md:inline-block btn-primary text-sm px-5 py-2">
+          {t.nav.trial}
+        </a>
+
+        <!-- ハンバーガー（SP） -->
+        <button
+          id="menu-toggle"
+          class="md:hidden p-2 text-charcoal hover:text-shu transition-colors"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="メニューを開く"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path id="menu-icon-open"  stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            <path id="menu-icon-close" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- モバイルメニュー -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-border bg-white">
+    <nav class="px-4 py-4 space-y-1">
+      {navLinks.map(({ href, label }) => (
+        <a href={href} class="block px-3 py-2.5 text-sm font-medium text-midgray hover:text-charcoal hover:bg-warmwhite transition-colors">
+          {label}
+        </a>
+      ))}
+      <div class="pt-3">
+        <a href={getLocalePath(locale, '/contact')} class="block btn-primary text-center text-sm">
+          {t.nav.trial}
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle    = document.getElementById('menu-toggle');
+  const menu      = document.getElementById('mobile-menu');
+  const iconOpen  = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden');
+    iconOpen?.classList.toggle('hidden', !isOpen);
+    iconClose?.classList.toggle('hidden', isOpen);
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+  });
+</script>
