@@ -23,12 +23,8 @@ const currentPath = '/';
           <a href={getLocalePath(locale, '/about')} class="btn-shu-outline">{t.about.heading} →</a>
         </div>
         <div class="relative flex items-center justify-center py-12">
-          <div class="w-52 h-52 rounded-full bg-shu/8 flex items-center justify-center">
-            <div class="w-36 h-36 rounded-full bg-shu/15 flex items-center justify-center">
-              <div class="w-20 h-20 rounded-full bg-shu/25 flex items-center justify-center">
-                <span class="text-3xl text-shu font-bold select-none">月</span>
-              </div>
-            </div>
+          <div class="w-52 h-52 rounded-full overflow-hidden">
+            <img src="/teacher.jpg" alt="廣島明奈" class="w-full h-full object-cover" />
           </div>
           <div class="absolute bottom-4 right-4 text-right">
             <p class="font-bold text-charcoal text-sm">{t.about.teacherName}</p>
