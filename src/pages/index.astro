@@ -51,7 +51,7 @@ const currentPath = '/';
 
       <!-- グリッド枠線スタイル -->
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-border border border-border">
-        {t.courses.items.slice(0, 3).map((course: any) => (
+        {t.courses.highlights.map((course: any) => (
           <div class="bg-white p-7 hover:bg-warmwhite transition-colors duration-200">
             <h3 class="text-base font-bold text-charcoal mb-1">{course.name}</h3>
             <p class="text-xs text-midgray mb-3">{course.target}</p>

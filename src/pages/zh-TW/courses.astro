@@ -9,6 +9,7 @@ const currentPath = '/courses';
 ---
 
 <BaseLayout locale={locale} t={t} title={t.courses.heading} currentPath={currentPath}>
+
   <section class="py-16 bg-warmwhite border-b border-border">
     <div class="max-w-3xl mx-auto px-4 text-center">
       <p class="text-xs text-shu font-semibold tracking-widest uppercase mb-3">Courses & Fees</p>
@@ -18,29 +19,110 @@ const currentPath = '/courses';
   </section>
 
   <section class="py-16 bg-white">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-border border border-border">
-        {t.courses.items.map((course: any, i: number) => (
-          <div class={`bg-white p-8 hover:bg-warmwhite transition-colors duration-200 ${i === t.courses.items.length - 1 ? 'md:col-span-2' : ''}`}>
-            <div class="flex items-start justify-between mb-4">
-              <h2 class="text-lg font-bold text-charcoal">{course.name}</h2>
-              {i === t.courses.items.length - 1 && (
-                <span class="text-[10px] font-bold text-shu border border-shu px-2 py-0.5 tracking-widest uppercase">推薦</span>
-              )}
-            </div>
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span class="bg-warmwhite text-midgray text-xs px-3 py-1 rounded-sm border border-border">{course.target}</span>
-              <span class="bg-warmwhite text-midgray text-xs px-3 py-1 rounded-sm border border-border">{course.format}</span>
-            </div>
-            <p class="text-sm text-midgray leading-relaxed mb-6">{course.desc}</p>
-            <div class="flex items-center justify-between pt-5 border-t border-border">
-              <span class="text-lg font-bold text-shu">{course.price}</span>
-              <a href={getLocalePath(locale, '/contact')} class="text-xs font-semibold text-charcoal hover:text-shu transition-colors tracking-wide">申請 →</a>
-            </div>
-          </div>
-        ))}
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 space-y-14">
+
+      <!-- 入學費 -->
+      <div class="flex items-center justify-between gap-6 bg-redlight border border-shu/20 rounded px-6 py-5">
+        <div>
+          <p class="text-base font-bold text-charcoal">{t.courses.registration.label}</p>
+          <p class="text-sm text-midgray mt-1">{t.courses.registration.desc}</p>
+        </div>
+        <p class="text-2xl font-bold text-shu whitespace-nowrap">{t.courses.registration.price}</p>
       </div>
-      <p class="mt-6 text-xs text-midgray text-center">{t.courses.note}</p>
+
+      <!-- 個人課程 -->
+      <div>
+        <h2 class="text-lg font-bold text-charcoal mb-5 pb-3 border-b border-border">
+          {t.courses.privateLessons.label}
+        </h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="bg-warmwhite">
+                <th class="text-left text-xs font-semibold text-midgray tracking-wider py-3 px-4 border border-border">{t.courses.privateLessons.durationHeader}</th>
+                <th class="text-center text-xs font-semibold text-midgray tracking-wider py-3 px-4 border border-border">{t.courses.privateLessons.singleLabel}</th>
+                <th class="text-center text-xs font-semibold text-midgray tracking-wider py-3 px-4 border border-border">{t.courses.privateLessons.ticketLabel}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {t.courses.privateLessons.rows.map((row: any) => (
+                <tr class="hover:bg-warmwhite/60 transition-colors">
+                  <td class="py-3.5 px-4 border border-border font-medium text-charcoal">{row.duration}</td>
+                  <td class="py-3.5 px-4 border border-border text-center font-semibold text-charcoal">{row.single}</td>
+                  <td class="py-3.5 px-4 border border-border text-center font-semibold text-shu">{row.ticket}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 團體課程 -->
+      <div>
+        <h2 class="text-lg font-bold text-charcoal pb-3 border-b border-border">
+          {t.courses.groupLessons.label}
+          <span class="text-xs font-normal text-midgray ml-2">({t.courses.groupLessons.priceNote})</span>
+        </h2>
+
+        <!-- 單堂 -->
+        <p class="text-sm font-semibold text-charcoal mt-8 mb-3">{t.courses.groupLessons.singleLabel}</p>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="bg-warmwhite">
+                <th class="text-left text-xs font-semibold text-midgray tracking-wider py-3 px-4 border border-border">{t.courses.groupLessons.sizeLabel}</th>
+                {t.courses.groupLessons.durations.map((d: string) => (
+                  <th class="text-center text-xs font-semibold text-midgray tracking-wider py-3 px-4 border border-border">{d}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {t.courses.groupLessons.rows.map((row: any) => (
+                <tr class="hover:bg-warmwhite/60 transition-colors">
+                  <td class="py-3.5 px-4 border border-border font-medium text-charcoal">{row.size}</td>
+                  {row.single.map((price: string) => (
+                    <td class="py-3.5 px-4 border border-border text-center font-semibold text-charcoal">{price}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 4堂套票 -->
+        <p class="text-sm font-semibold text-charcoal mt-8 mb-3">{t.courses.groupLessons.ticketLabel}</p>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="bg-warmwhite">
+                <th class="text-left text-xs font-semibold text-midgray tracking-wider py-3 px-4 border border-border">{t.courses.groupLessons.sizeLabel}</th>
+                {t.courses.groupLessons.durations.map((d: string) => (
+                  <th class="text-center text-xs font-semibold text-midgray tracking-wider py-3 px-4 border border-border">{d}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {t.courses.groupLessons.rows.map((row: any) => (
+                <tr class="hover:bg-warmwhite/60 transition-colors">
+                  <td class="py-3.5 px-4 border border-border font-medium text-charcoal">{row.size}</td>
+                  {row.ticket.map((price: string) => (
+                    <td class="py-3.5 px-4 border border-border text-center font-semibold text-shu">{price}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <p class="text-xs text-midgray text-center">{t.courses.note}</p>
+
+      <div class="text-center pt-2">
+        <a href={getLocalePath(locale, '/contact')} class="btn-primary">
+          {t.courses.cta}
+        </a>
+      </div>
+
     </div>
   </section>
 

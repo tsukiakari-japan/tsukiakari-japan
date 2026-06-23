@@ -57,49 +57,45 @@
       "Registered Japanese Language Teacher (certified by the Ministry of Education, Culture, Sports, Science and Technology)",
       "Completed Comprehensive Japanese Language Teacher Training Program (420 hours, Agency for Cultural Affairs guidelines)",
       "Able to communicate in English and Chinese",
-      "Experience teaching learners from English-speaking and Asian countries",
-      "Experience in heritage language education for Japanese children living abroad"
+      "Experience teaching learners from English-speaking and Asian countries"
     ]
   },
   "courses": {
     "heading": "Courses & Fees",
     "subheading": "Choose the course that fits your goals and level. Trial lessons are available for all courses.",
-    "items": [
-      {
-        "name": "Beginner Course",
-        "target": "Complete beginners",
-        "format": "Online / In-person",
-        "price": "[TBD] ¥〇〇 / 60 min",
-        "desc": "Start from hiragana and katakana, learn everyday greetings and basic expressions."
-      },
-      {
-        "name": "Elementary–Intermediate Course",
-        "target": "Those aiming for conversational Japanese",
-        "format": "Online / In-person",
-        "price": "[TBD] ¥〇〇 / 60 min",
-        "desc": "Study grammar and vocabulary systematically to reach a natural conversational level."
-      },
-      {
-        "name": "Business Japanese",
-        "target": "Those who need Japanese for work",
-        "format": "Online",
-        "price": "[TBD] ¥〇〇 / 60 min",
-        "desc": "Learn practical Japanese for business settings — keigo, emails, and workplace communication."
-      },
-      {
-        "name": "Heritage Language Course",
-        "target": "Japanese children living abroad",
-        "format": "Online",
-        "price": "[TBD] ¥〇〇 / 60 min",
-        "desc": "Focused on maintaining and strengthening reading and writing skills while nurturing a connection to Japanese."
-      },
-      {
-        "name": "Trial Lesson",
-        "target": "Everyone",
-        "format": "Online / In-person",
-        "price": "[TBD] ¥〇〇 or Free",
-        "desc": "Try a lesson with no pressure. Experience the teaching style and atmosphere firsthand."
-      }
+    "registration": {
+      "label": "Registration Fee",
+      "price": "¥10,000",
+      "desc": "Includes lesson setup & needs assessment"
+    },
+    "privateLessons": {
+      "label": "Private Lessons",
+      "durationHeader": "Duration",
+      "singleLabel": "Single",
+      "ticketLabel": "4-Lesson Ticket",
+      "rows": [
+        { "duration": "60 min", "single": "¥7,500", "ticket": "¥29,000" },
+        { "duration": "90 min", "single": "¥10,000", "ticket": "¥38,000" },
+        { "duration": "120 min", "single": "¥13,000", "ticket": "¥49,000" }
+      ]
+    },
+    "groupLessons": {
+      "label": "Group Lessons",
+      "priceNote": "Per class, total price",
+      "singleLabel": "Single",
+      "ticketLabel": "4-Lesson Ticket",
+      "sizeLabel": "Group size",
+      "durations": ["60 min", "90 min", "120 min"],
+      "rows": [
+        { "size": "2 students",   "single": ["¥13,000", "¥17,000", "¥22,000"], "ticket": ["¥49,000", "¥64,000",  "¥83,000"]  },
+        { "size": "3–5 students", "single": ["¥19,000", "¥25,000", "¥33,000"], "ticket": ["¥72,000", "¥95,000",  "¥125,000"] },
+        { "size": "6–8 students", "single": ["¥22,000", "¥29,000", "¥38,000"], "ticket": ["¥83,000", "¥110,000", "¥144,000"] }
+      ]
+    },
+    "highlights": [
+      { "name": "Private Lessons", "target": "Online / In-person", "desc": "Choose 60, 90, or 120 minutes. Available as a single lesson or a 4-lesson ticket.", "format": "Online / In-person", "price": "From ¥7,500" },
+      { "name": "Group Lessons", "target": "2–8 students", "desc": "Learn with friends or a partner. Classes arranged to fit your group's size and level.", "format": "Online", "price": "From ¥13,000" },
+      { "name": "Start with a Trial", "target": "Everyone", "desc": "Not sure which course fits? Try a trial lesson first and experience the teaching style.", "format": "Online / In-person", "price": "Contact us" }
     ],
     "note": "* Fees are subject to change. Please contact us for details.",
     "cta": "Book a Trial Lesson"
