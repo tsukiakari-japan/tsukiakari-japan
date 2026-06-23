@@ -27,37 +27,51 @@ const { locale, t } = Astro.props;
   </div>
 
   <div class="relative max-w-6xl mx-auto px-4 sm:px-6 py-24 w-full">
-    <div class="max-w-xl">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
 
-      <!-- 朱線 + 英語キャプション -->
-      <div class="flex items-center gap-3 mb-8">
-        <span class="w-8 h-px bg-shu" aria-hidden="true"></span>
-        <span class="text-shu text-xs font-semibold tracking-[0.2em] uppercase">
-          Japanese Language School
-        </span>
+      <!-- 左カラム：キャッチコピー・CTA -->
+      <div>
+
+        <!-- 朱線 + 英語キャプション -->
+        <div class="flex items-center gap-3 mb-8">
+          <span class="w-8 h-px bg-shu" aria-hidden="true"></span>
+          <span class="text-shu text-xs font-semibold tracking-[0.2em] uppercase">
+            Japanese Language School
+          </span>
+        </div>
+
+        <!-- キャッチコピー -->
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-charcoal leading-[1.2] mb-7 tracking-tight">
+          {t.hero.headline}
+        </h1>
+
+        <!-- サブテキスト -->
+        <p class="text-base md:text-lg text-midgray leading-relaxed mb-10 max-w-md">
+          {t.hero.subtext}
+        </p>
+
+        <!-- CTA -->
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href={getLocalePath(locale, '/contact')} class="btn-primary text-center">
+            {t.hero.cta}
+          </a>
+          <a href={getLocalePath(locale, '/courses')} class="btn-outline text-center">
+            {t.nav.courses}
+          </a>
+        </div>
+
+        <p class="mt-5 text-sm text-midgray/60">{t.hero.ctaSub}</p>
       </div>
 
-      <!-- キャッチコピー -->
-      <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-charcoal leading-[1.2] mb-7 tracking-tight">
-        {t.hero.headline}
-      </h1>
-
-      <!-- サブテキスト -->
-      <p class="text-base md:text-lg text-midgray leading-relaxed mb-10 max-w-md">
-        {t.hero.subtext}
-      </p>
-
-      <!-- CTA -->
-      <div class="flex flex-col sm:flex-row gap-3">
-        <a href={getLocalePath(locale, '/contact')} class="btn-primary text-center">
-          {t.hero.cta}
-        </a>
-        <a href={getLocalePath(locale, '/courses')} class="btn-outline text-center">
-          {t.nav.courses}
-        </a>
+      <!-- 右カラム：教室の写真 -->
+      <div class="order-last">
+        <img
+          src="/classroom.jpg"
+          alt="つきあかり日本語教室の授業風景"
+          class="w-full rounded-2xl shadow-2xl object-cover aspect-[4/3]"
+        />
       </div>
 
-      <p class="mt-5 text-sm text-midgray/60">{t.hero.ctaSub}</p>
     </div>
   </div>
 
